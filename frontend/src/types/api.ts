@@ -5,6 +5,7 @@ export interface ApiResponse<T> {
   message?: string
   data?: T
   errors?: ApiErrorField[]
+  errorCode?: string
   meta?: PaginationMeta
   links?: PaginationLinks
 }
@@ -70,6 +71,7 @@ export interface Student {
   courseId: string
   userId: string
   course?: Course
+  documents?: Document[]
   user?: { userId: string; name: string; email: string; status?: string }
 }
 
@@ -80,6 +82,7 @@ export interface Lecturer {
   courseId: string
   userId: string
   course?: Course
+  documents?: Document[]
   user?: { userId: string; name: string; email: string; status?: string }
 }
 
@@ -88,6 +91,7 @@ export interface HeadLecturer {
   staffNumber: string
   mykadNumber: string | null
   userId: string
+  documents?: Document[]
   user?: { userId: string; name: string; email: string; status?: string }
 }
 

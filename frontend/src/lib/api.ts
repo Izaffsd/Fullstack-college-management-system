@@ -86,6 +86,7 @@ export async function api<T>(
 }
 
 export function getApiUrl(path: string): string {
+  if (path.startsWith('http://') || path.startsWith('https://')) return path
   const base = API_URL.replace(/\/$/, '')
   return path.startsWith('/') ? `${base}${path}` : `${base}/${path}`
 }

@@ -11,7 +11,13 @@
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate dev",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,ts,json}": "prettier --write"
   },
   "dependencies": {
     "@prisma/adapter-mariadb": "^7.4.2",
@@ -41,6 +47,9 @@
     "@types/multer": "^2.1.0",
     "@types/node": "^25.4.0",
     "@types/node-cron": "^3.0.11",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.3.2",
+    "prettier": "^3.8.1",
     "prisma": "^7.4.1",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"

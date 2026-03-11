@@ -19,7 +19,7 @@ export function Header({ title }: { title?: string }) {
     user?.lecturer?.documents?.find((d: { category: string }) => d.category === 'PROFILE_PICTURE')?.fileUrl ??
     user?.headLecturer?.documents?.find((d: { category: string }) => d.category === 'PROFILE_PICTURE')?.fileUrl
 
-  const avatarUrl = profilePictureUrl ? getApiUrl(profilePictureUrl.startsWith('/') ? profilePictureUrl : `/${profilePictureUrl}`) : null
+  const avatarUrl = profilePictureUrl ? getApiUrl(profilePictureUrl) : null
 
   return (
     <header className="flex h-14 items-center justify-between border-b border-border bg-background px-6">

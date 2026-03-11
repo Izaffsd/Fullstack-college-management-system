@@ -1,14 +1,13 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { authStore } from '@/stores/authStore'
-import { api } from '@/lib/api'
 import type { User } from '@/types/api'
 import { getApiUrl } from '@/lib/api'
 import Link from 'next/link'
 
-export default function VerifyEmailPage() {
+function VerifyEmailContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const token = searchParams.get('token')
@@ -70,4 +69,21 @@ export default function VerifyEmailPage() {
   }
 
   return null
+}
+
+export default function VerifyEmailPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex min-h-screen items-center justify-center p-6">
+          <div className="space-y-8">
+            <h1 className="text-2xl font-semibold">Verifying email...</h1>
+            <p className="text-sm text-muted-foreground">Please wait.</p>
+          </div>
+        </div>
+      }
+    >
+      <VerifyEmailContent />
+    </Suspense>
+  )
 }
